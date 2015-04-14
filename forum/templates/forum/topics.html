@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+	<br>
+	<p>Розділ: {{ section.title }}</p>
+	<br>	
+	<p> Теми розділу [{{ topics|length }}] :</p> 	
+	<hr>		
+	<ul>
+	{% if topics %}	
+		<br>	
+		{% for topic in topics %}			
+			<li>
+				<a href="/forum/{{ section.id }}/{{ topic.id }}/"><b> {{ topic.title }} </b>
+					<br>
+					({{ topic.description }} )
+					<br>
+					<h5>Автор: {{ topic.author }} Створено: {{ topic.timestamp }}</h5>
+					<br>
+				</a>
+			</li>			
+		{% endfor %}		
+	</ul>	
+	<hr>		
+	{% endif %}
+	
+	
+	{% if user.is_authenticated %}
+	<br>
+	<form action="/forum/{{ section.id }}/addtopic/" method="post">
+		{% csrf_token %}
+		<table>
+			{{ form.as_table }}
+		</table>
+		<input class="button" type="submit" value="Відправити">
+	</form>	
+	<br>
+	<hr>
+	{% endif %}
+
+
+{% endblock %}

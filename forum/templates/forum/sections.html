@@ -1,0 +1,19 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<br>
+<p>Розділи форуму [{{ sections|length }}] :</p>
+<hr><br>
+
+{% if sections %}	
+	<ul>
+	{% for section in sections %}		
+		<li>
+			<b><a href="/forum/{{ section.id }}/"> {{ section.title }} </a></b>
+		</li>
+	{% endfor %}
+	</ul>
+<br>
+<hr>
+{% endif %}
+{% endblock %}

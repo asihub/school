@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>Розклад уроків:</h2>
+<hr>
+
+<h5> Сьогодні: {{ today }} ({% ifequal week "this" %}поточний {% else %}наступний {% endifequal %}тиждень {% if parity %} парний{% else %} непарний{% endif %})</h5>
+<h5><a href="/timetable/{% ifequal week "this" %}next{% else %}this{% endifequal %}/">
+Показати розклад на {% ifequal week "this" %}наступний{% else %}поточний{% endifequal %} тиждень</a>
+</h5>
+
+
+{% if tt_list %}
+	<table>
+    {% for tt in tt_list %}
+    	{% ifchanged tt.dayOfWeek %}
+    		{% ifequal tt.dayOfWeek.dayName "Середа" %} <tr> {% endifequal %}   	 		 
+    		{% ifequal tt.dayOfWeek.dayName "П'ятниця" %} <tr> {% endifequal %}
+			<td><b> {{ tt.dayOfWeek }} </b><br>
+	   	{% endifchanged %} 	
+        {{ tt.lessonNumber }} [{{ tt.begin_time }} - {{ tt.end_time }}] {{ tt.lesson }} ({{ tt.room }}) <br>    	
+    {% endfor %}
+	</table>
+
+{% endif %}
+
+{% endblock %}

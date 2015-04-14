@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<h4>Щоденник</h4>
+<hr>
+
+{% if user.is_authenticated %}
+<form action="" method="post">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+	<input class="button submit" type="submit" value="Відправити">
+</form>
+<hr>
+{% endif %}
+
+{% for dn in d_notes %}
+	{% ifchanged dn.hw_date %}
+		{% if not forloop.first %}
+			<hr>
+		{% endif %}		
+		<b>На {{ dn.hw_date }}:</b><br>		
+	{% endifchanged %}
+	{{ dn.lesson }} {{dn.hw_descr }} <br>
+{% endfor %}
+
+
+{% endblock %}

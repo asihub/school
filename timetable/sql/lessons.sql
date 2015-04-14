@@ -1,0 +1,17 @@
+INSERT INTO timetable_lessons ('lesson') VALUES('Інформатика');
+INSERT INTO timetable_lessons ('lesson') VALUES('Історія України');
+INSERT INTO timetable_lessons ('lesson') VALUES('Англійська мова');
+INSERT INTO timetable_lessons ('lesson') VALUES('Біологія');
+INSERT INTO timetable_lessons ('lesson') VALUES('Виховна');
+INSERT INTO timetable_lessons ('lesson') VALUES('Географія');
+INSERT INTO timetable_lessons ('lesson') VALUES('Логіка');
+INSERT INTO timetable_lessons ('lesson') VALUES('Малювання');
+INSERT INTO timetable_lessons ('lesson') VALUES('Математика');
+INSERT INTO timetable_lessons ('lesson') VALUES('Музика');
+INSERT INTO timetable_lessons ('lesson') VALUES('Німецька мова');
+INSERT INTO timetable_lessons ('lesson') VALUES('Основи здоров''я');
+INSERT INTO timetable_lessons ('lesson') VALUES('Праця');
+INSERT INTO timetable_lessons ('lesson') VALUES('Світова література');
+INSERT INTO timetable_lessons ('lesson') VALUES('Українська література');
+INSERT INTO timetable_lessons ('lesson') VALUES('Українська мова');
+INSERT INTO timetable_lessons ('lesson') VALUES('Фізкультура');

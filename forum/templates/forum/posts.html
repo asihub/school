@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<br>	
+<p> Розділ: <b> <a href="/forum/{{ section.id }}/"> {{ section.title }} </a> </b> </p>	
+<p> Тема: {{ topic.title }} </p>
+<br>	
+<p> Повідомлення користувачів [{{ posts|length }}]:</p>
+<hr>
+
+{% if posts %}
+	<ul>
+	{% for post in posts %}
+		<br>
+		<li>								
+			<b>{{ post.author }}:</b>
+			<br>
+			{{ post.body }}
+			<br>
+			<br><h5>{{ post.timestamp }} [Id:  {{post.id}}] </h5>
+			{% if not forloop.last %}
+				<br><hr>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+	<br>
+	<hr>	
+{% endif %}
+
+{% if saved %} Повідомлення збережено {%endif%}
+
+{% if user.is_authenticated %}
+<br>
+<form action="/forum/{{ section.id }}/{{ topic.id }}/addpost/" method="post">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+	<input class="button" type="submit" value="Відправити">
+</form>
+<br>
+<hr>
+{% endif %}
+
+
+{% endblock %}
