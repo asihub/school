@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<br>
+<h2> {{ a.title }} </h2>
+<hr>
+<h5>{{a.timestamp}}</h5>
+<br>
+<p> {{ a.body }} </p>
+<hr>
+<p> [{{ a.source }}] </p>
+    
+{% endblock %}

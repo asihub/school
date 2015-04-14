@@ -1,0 +1,38 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+{% if articles %}
+	<h2>Новини:</h2>
+	<hr>
+	<ul>
+	{% for article in articles %}
+	    <li>        	
+	    	<h3><a href="/articles/{{ article.id }}/"> {{ article.title }} </a></h3>
+	    	<h5> від {{ article.timestamp}} </h5>
+	    	<p> {{ article.body|slice:":400" }}<a href="/articles/{{ article.id }}/"> ... <i class="fi-arrow-right size-16"></i></a> </p>
+	    	<p> Джерело: {{article.source }} </p>        	        	
+	    </li>
+	{% endfor %}
+	</ul>
+	<hr>
+	
+	Сторінка:
+	{% if articles.has_previous %}
+		<a href="/articles/page/{{articles.previous_page_number}}/"><i class="fi-arrow-left size-16"></i></a>
+	{% endif %}
+		
+	{% for page in articles.paginator.page_range %}
+		{% if page == articles.number %}
+			{{page}}
+		{% else %}
+			<a href="/articles/page/{{page}}/">{{page}}</a>
+		{% endif %}
+	{% endfor %}
+	    
+	{% if articles.has_next %}
+		<a href="/articles/page/{{articles.next_page_number}}/"><i class="fi-arrow-right size-16"></i></a>
+	{% endif %}
+    
+{% endif %}   
+
+{% endblock %}
