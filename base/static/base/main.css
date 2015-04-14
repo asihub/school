@@ -1,0 +1,90 @@
+*
+{
+  margin: 0 auto 0 auto;
+  text-align:left;
+}
+
+body {
+	margin: 0 auto 0 auto;
+	padding: 0;
+	background: url(bg.gif) repeat;
+	text-align: center;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#page
+{
+    margin: 0 auto 0 auto; 
+    display: table; 
+    height: 100%;  
+    position: relative; 
+    overflow: hidden; 
+    width: 900px;
+}
+
+#header {
+	position:relative;
+	width: 900px;
+	height: 110px;
+	margin-left:20px;
+	margin-right:20px;
+	margin-top:10px;
+	background: url(header.gif) no-repeat;	
+}
+
+#bar
+{
+	position:relative;
+	width: 895px;
+	height:57px;
+	margin-left:29px;
+	margin-right:21px;
+	background: url(bar.gif) no-repeat;
+}
+
+.menuLink
+{
+	height:64px;
+	width: 12%;
+	text-align:center;
+	float:left;
+	font-family:Geneva, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:#252F33;
+	padding-top:5px;
+}
+
+.authLink
+{
+	height:20px;
+	width: 100px;
+	text-align:left;
+	float:right;
+	font-size:14px;
+	color:#252F33;
+	padding-top:10px;
+}
+
+a
+{
+	text-decoration:none;
+	color:#252F33;
+}
+
+#pageContent
+{
+	width: 800px;
+	background-color: #FFFFFF;
+	margin-top: 5px;
+}
+
+td {
+	border: solid;	
+	font-size: 14px;
+	vertical-align: top;
+	border-width: 1px;
+}
+
+hr { border: double;}
