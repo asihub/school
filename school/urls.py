@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^base/', include('base.urls')),
     url(r'^articles/', include('articles.urls')),
     url(r'^timetable/', include('timetable.urls')),
+    url(r'^lib/', include('library.urls')),
     url(r'^diary/', include('diary.urls')),
     url(r'^calend/', include('calend.urls')),
     url(r'^forum/', include('forum.urls')),

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'timetable',
     'diary',
     'forum',
-    'calend'
+    'calend',
+    'library',
 ]
 
 MIDDLEWARE_CLASSES = [
