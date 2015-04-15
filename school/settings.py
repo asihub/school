@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.media',         # ДОБАВИВ для filefield
             ],
         },
     },
@@ -107,3 +108,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media files
+
+#MEDIA_ROOT = os.path.abspath(os.path.dirname(__file__))
+MEDIA_ROOT = ''
+MEDIA_URL = 'http://127.0.0.1:8000/'
