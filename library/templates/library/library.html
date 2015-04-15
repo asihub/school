@@ -2,6 +2,12 @@
 {% block content %}
 
 <h2>{{ title }}</h2>
+<form method="post" action="">
+	{% csrf_token %}
+	{{ search_form.as_p }}
+	<input type="submit" value="Шукати" class="submit button" name="search_btn"/> 
+</form>
+
 <hr>
 
 <ul>
@@ -31,7 +37,7 @@
 	    <table>
 	        {{ form.as_table }}
 	    </table>
-	    <input type="submit" value="Відправити" class="button submit" name="addbtn">
+	    <input type="submit" value="Відправити" class="button submit" name="add_btn">
 	</form>
 {% endif %}
 
