@@ -8,6 +8,6 @@ class AddBookForm(ModelForm):
         model = Book
         fields = ("library", "title", "author", "year", "file")
 
-class SearchForm(Form):    
+class SearchForm(Form):
     
-    search_text = CharField(max_length=20, label="Текст для пошуку (по назві книги):")
+    search_text = CharField(max_length=20, label="Текст для пошуку")
