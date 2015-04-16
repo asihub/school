@@ -1,15 +1,33 @@
 from django.shortcuts import render, redirect
 from .forms import AddBookForm, SearchForm
-from .models import Book
-
+from .models import Book, Library
 
 def library(request):
+    
+    dataset = Library.objects.all()
+    title = "Розділи бібліотеки"
+    
+    search_form = SearchForm(request.POST or None)
+    if search_form.is_valid():
+        if "search_text" in search_form.cleaned_data:
+            search_text = search_form.cleaned_data["search_text"]
+            dataset = dataset.filter(title__contains=search_text)       
+    
+    context = {"dataset": dataset, 
+               "title": title, 
+               "search_form": search_form}
+        
+    return render(request, "library/library.html", context)
+
+
+def books(request, lib_id=1):
+    
+    dataset = Book.objects.filter(library_id=lib_id)
     
     if request.method=="POST":
         
         if "add_btn" in request.POST:
             
-            dataset = Book.objects.all()
             search_form = SearchForm()            
             
             form = AddBookForm(request.POST, request.FILES)
@@ -25,21 +43,18 @@ def library(request):
             if search_form.is_valid():
                 if "search_text" in search_form.cleaned_data:
                     search_text = search_form.cleaned_data["search_text"]
-                    dataset = Book.objects.filter(title__contains=search_text)
-            else:
-                dataset = Book.objects.all()
+                    dataset = dataset.filter(title__contains=search_text)
                 
     else:
         
-        form = AddBookForm()
-        dataset = Book.objects.all()
+        form = AddBookForm()        
         search_form = SearchForm()
     
 
-    context = {"title": "Бібліотека", 
+    context = {"title": "Книги", 
                "form": form, 
                "dataset": dataset, 
                "search_form": search_form,
                }       
     
-    return render(request, "library/library.html", context)
+    return render(request, "library/books.html", context)
