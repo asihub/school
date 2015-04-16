@@ -2,19 +2,8 @@
 
 {% block content %}
 
-<h4>Щоденник</h4>
+<h2>Щоденник</h2>
 <hr>
-
-{% if user.is_authenticated %}
-<form action="" method="post">
-	{% csrf_token %}
-	<table>
-		{{ form.as_table }}
-	</table>
-	<input class="button submit" type="submit" value="Відправити">
-</form>
-<hr>
-{% endif %}
 
 {% for dn in d_notes %}
 	{% ifchanged dn.hw_date %}
@@ -26,5 +15,20 @@
 	{{ dn.lesson }} {{dn.hw_descr }} <br>
 {% endfor %}
 
+
+
+{% if user.is_authenticated %}
+<hr>
+<h4>Добавити завдання:</h4>
+<hr>
+<form action="" method="post">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+	<input class="button submit" type="submit" value="Відправити">
+</form>
+<hr>
+{% endif %}
 
 {% endblock %}

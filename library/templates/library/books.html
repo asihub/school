@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>{{ title }}</h2>
+<hr>
+
+<form method="post" action="">
+	{% csrf_token %}
+	{{ search_form.as_p }}
+	<input type="submit" value="Шукати" class="submit button" name="search_btn"/> 
+</form>
+
+<hr>
+
+<ul>
+{% if dataset %}	
+	{% for row in dataset %}
+	<li>
+		<a href={{ row.file.url }}>{{ row.title }}</a>		
+		{% if row.author %}
+			<br>		
+			<small>Автор: {{ row.author }} </small>
+		{% endif %}
+		{% if row.year %} 
+			<br> 
+			<small>Рік видання: {{ row.year }} </small>
+		{% endif %}		
+	</li> 
+	{% endfor %}	
+{% endif %}
+</ul>
+<hr>
+
+{% if user.is_authenticated %}
+	<h4>Добавити книгу</h4>
+	<hr>
+	<form enctype="multipart/form-data" method="post" action="">
+	    {% csrf_token %}
+	    <table>
+	        {{ form.as_table }}
+	    </table>
+	    <input type="submit" value="Відправити" class="button submit" name="add_btn">
+	</form>
+{% endif %}
+
+{% endblock %}

@@ -1,17 +1,30 @@
 {% extends "base/base.html" %}
 {% block content %}
 
-<h4>{{ title }}</h4>
+<h2>{{ title }}</h2>
+<hr>
+
+<form method="post" action="">
+	{% csrf_token %}
+	{{ search_form.as_p }}
+	<input type="submit" value="Шукати" class="submit button" name="search_btn"/> 
+</form>
 <hr>
 
 <ul>
-{% if dataset %}
-	<li>
+{% if dataset %}	
 	{% for row in dataset %}
-		{{ row.title }}
-	{% endfor%}
-	</li>
+	<li>
+		<a href="/library/{{ row.id }}/">{{ row.title }}</a>
+		{% if row.description %}
+			<br>
+			<small>({{ row.description}})</small>
+		{% endif%}
+	</li> 
+	{% endfor %}	
 {% endif %}
 </ul>
+<hr>
+
 
 {% endblock %}
