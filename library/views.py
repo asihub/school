@@ -22,15 +22,12 @@ def library(request):
             form = AddBookForm()
             search_form = SearchForm(request.POST)
             
-            # TODO: Пофіксити. Помилка при відправці пустого поля для пошуку
-            
             if search_form.is_valid():
-                search_text = search_form.cleaned_data["search_text"]
-#                 dataset = Book.objects.filter(title__contains=search_text)
-                if search_text == "":
-                    dataset = Book.objects.all()
-                else:
+                if "search_text" in search_form.cleaned_data:
+                    search_text = search_form.cleaned_data["search_text"]
                     dataset = Book.objects.filter(title__contains=search_text)
+            else:
+                dataset = Book.objects.all()
                 
     else:
         
