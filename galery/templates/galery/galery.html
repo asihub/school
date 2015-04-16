@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>{{ title }}</h2>
+<hr>
+
+<ul>
+{% if dataset %}
+	<li>
+	{% for row in dataset %}
+	
+		<a href="/album/{{row.id}}/">{{ row.title }}</a>
+		{% if row.description %}
+			<br>
+			<small>({{ row.description }})</small>
+		{% endif %}		
+		
+		<br><br>
+		<small>Автор: {{ row.user.username }}</small>		
+		<br>
+		<small>Створено: {{ row.timestamp }}</small>
+				
+	{% endfor%}
+	</li>
+{% else %}
+	<p>Немає даних</p>
+{% endif %}
+</ul>
+<hr>
+
+
+{% if user.is_authenticated %}
+<h4>Створити</h4>
+<hr>
+<form action="." method="post">
+	{% csrf_token %}
+	<table>
+		{{ form.as_table }}
+	</table>
+	<input class="button" type="submit" class="button submit" value="Відправити">
+</form>	
+<hr>
+{% endif %}
+
+{% endblock %}

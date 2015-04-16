@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'forum',
     'calend',
     'library',
+    'galery',
 ]
 
 MIDDLEWARE_CLASSES = [
