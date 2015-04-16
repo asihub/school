@@ -20,3 +20,12 @@ def galery(request):
                }
         
     return render(request, "galery/galery.html", context)
+
+def album(request, album_id=1):
+    
+    
+    title = "Альбом"
+    context = {"title": title}
+    return render(request, "galery/album.html", context)
+    
+    

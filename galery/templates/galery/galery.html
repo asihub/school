@@ -8,15 +8,15 @@
 {% if dataset %}
 	<li>
 	{% for row in dataset %}
-	
-		<a href="/album/{{row.id}}/">{{ row.title }}</a>
+
+		<a href="/galery/{{row.id}}/">{{ row.title }}</a>
 		{% if row.description %}
 			<br>
 			<small>({{ row.description }})</small>
-		{% endif %}		
+		{% endif %}
 		
 		<br><br>
-		<small>Автор: {{ row.user.username }}</small>		
+		<small>Автор: {{ row.user.username }}</small>
 		<br>
 		<small>Створено: {{ row.timestamp }}</small>
 				
