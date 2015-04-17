@@ -34,17 +34,18 @@ def album(request, galery_id=1):
             # Зберігаєм без мініатюри
             photo = form.save(commit=False)
             photo.galery_id = galery_id
-            photo.user = request.user            
+            photo.user = request.user                        
             photo.save()
-
-            # добавляєм мініатюру
-            thumb_path = get_thumb_path(photo.photo.path)
-            photo.thumbnail = thumb_path
             
+            # добавляєм мініатюру
+            thumbnail_path = add_mini(photo.photo.name)
+            photo.thumbnail_path = thumbnail_path
+            #photo.thumbnail_url = add_mini(photo.photo.url)            
+                         
             img = Image.open(photo.photo.path)
             img.thumbnail((128, 128), Image.ANTIALIAS)                        
-            img.save(thumb_path, 'JPEG')            
-            
+            img.save(thumbnail_path, 'JPEG')            
+             
             photo.save()
             
             return redirect(".")
@@ -57,7 +58,8 @@ def album(request, galery_id=1):
     context = {"title": title, "form": form, "dataset": dataset}
     return render(request, "galery/album.html", context)
     
-def get_thumb_path(s):
+def add_mini(s):
     parts = s.split(".")
     parts.insert(-1, "_mini.")
     return "".join(parts)
+

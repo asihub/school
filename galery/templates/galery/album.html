@@ -8,8 +8,8 @@
 {% if dataset %}
 	<li>
 	{% for row in dataset %}
-		<img src={{ row.photo.url }}/>
-<!-- 		<img src={{ row.thumbnail }}/> -->
+<!-- 		<img src={{ row.photo.url }}/> -->
+		<img src=/{{ row.thumbnail_path }}/>
 		{% if row.description %}
 			<h6>{{row.description}}</h6>
 		{% endif %}
