@@ -8,7 +8,12 @@
 {% if dataset %}
 	<li>
 	{% for row in dataset %}
-		{{ row.title }}
+		<img src={{ row.photo.url }}/>
+<!-- 		<img src={{ row.thumbnail }}/> -->
+		{% if row.description %}
+			<h6>{{row.description}}</h6>
+		{% endif %}
+		<br>
 	{% endfor%}
 	</li>
 {% else %}
@@ -19,7 +24,7 @@
 {% if user.is_authenticated %}
 <h4>Добавити фото</h4>
 <hr>
-<form action="." method="post">
+<form enctype="multipart/form-data" method="post" action=".">
 	{% csrf_token %}
 	<table>
 		{{ form.as_table }}
