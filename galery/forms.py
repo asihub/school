@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Galery
+from .models import Galery, Photo
 
 class GaleryForm(ModelForm):
      
@@ -7,3 +7,8 @@ class GaleryForm(ModelForm):
         model = Galery  
         fields = ["title", "description", "status"]
 
+class PhotoForm(ModelForm):
+    
+    class Meta:
+        model = Photo
+        fields = ["photo", "description"]

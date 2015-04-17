@@ -21,9 +21,9 @@ class Galery(models.Model):
     class Meta:
         ordering = ["timestamp"] 
 
-class Album(models.Model):
+class Photo(models.Model):
       
-    album = models.ForeignKey(Galery, verbose_name="Альбом")
+    galery = models.ForeignKey(Galery, verbose_name="Альбом")
     photo = models.ImageField(upload_to="galery/photo/", verbose_name="Фотографія")
     description = models.CharField(max_length=200, verbose_name="Коментар", blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Добавлено")
