@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^diary/', include('diary.urls')),
     url(r'^calend/', include('calend.urls')),
     url(r'^galery/', include('galery.urls')),
+    url(r'^vote/', include('vote.urls')),
     url(r'^forum/', include('forum.urls')),
     
     # DEBUG ONLY - для відображення загружених файлів
