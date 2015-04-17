@@ -25,8 +25,7 @@ class Photo(models.Model):
       
     galery = models.ForeignKey(Galery, verbose_name="Альбом")
     photo = models.ImageField(upload_to="galery/photo/", verbose_name="Фотографія")
-    thumbnail_path = models.CharField(max_length=100, default="")
-    thumbnail_url = models.CharField(max_length=100, default="")    
+    thumbnail = models.CharField(max_length=200, default="")
     description = models.CharField(max_length=200, verbose_name="Коментар", blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Добавлено")
     user = models.ForeignKey(User, verbose_name="Автор")

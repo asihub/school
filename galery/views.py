@@ -38,13 +38,12 @@ def album(request, galery_id=1):
             photo.save()
             
             # добавляєм мініатюру
-            thumbnail_path = add_mini(photo.photo.name)
-            photo.thumbnail_path = thumbnail_path
-            #photo.thumbnail_url = add_mini(photo.photo.url)            
+            thumbnail = add_mini(photo.photo.name)
+            photo.thumbnail = thumbnail
                          
             img = Image.open(photo.photo.path)
             img.thumbnail((128, 128), Image.ANTIALIAS)                        
-            img.save(thumbnail_path, 'JPEG')            
+            img.save(thumbnail, 'JPEG')            
              
             photo.save()
             
