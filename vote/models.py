@@ -20,3 +20,20 @@ class Vote(models.Model):
     class Meta:
         ordering = ["title"]  
 
+class Answer(models.Model):
+    
+    title = models.CharField(max_length=200, verbose_name="Відповідь")
+    vote = models.ForeignKey(Vote)
+    users = models.ManyToManyField(User, through="Result")
+    
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ["title",]
+        
+class Result(models.Model):
+    
+    answer = models.ForeignKey(Answer)
+    user = models.ForeignKey(User)
+            

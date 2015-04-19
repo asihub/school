@@ -8,12 +8,13 @@
 {% if dataset %}	
 	{% for row in dataset %}
 		<li>
-			{{ row.title }}
+			<a href=./{{ row.id }}/>{{ row.title }}</a>
 		</li>
 	{% endfor%}	
 {% else %}
 	<p>Немає даних</p>
 {% endif %}
 </ul>
+
 
 {% endblock %}

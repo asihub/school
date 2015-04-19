@@ -32,7 +32,9 @@ def books(request, lib_id=1):
             
             form = AddBookForm(request.POST, request.FILES)
             if form.is_valid():            
-                form.save()
+                book = form.save(commit=False)
+                book.library_id = lib_id
+                book.save()
                 return redirect(".")
             
         if "search_btn" in request.POST:
