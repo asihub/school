@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>Активні опитування</h2>
+<hr>
+
+<ul>
+{% if dataset %}	
+	{% for row in dataset %}
+		<li>
+			<a href=./{{ row.id }}/>{{ row.title }}</a>
+		</li>
+	{% endfor%}	
+{% else %}
+	<p>Немає даних</p>
+{% endif %}
+</ul>
+
+
+{% endblock %}

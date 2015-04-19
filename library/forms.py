@@ -6,7 +6,7 @@ class AddBookForm(ModelForm):
      
     class Meta:
         model = Book
-        fields = ("library", "title", "author", "year", "file")
+        fields = ("title", "author", "year", "file")
 
 class SearchForm(Form):
     

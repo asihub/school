@@ -13,11 +13,10 @@ def yearCalend(request, year=datetime.now().year, month=datetime.now().month):
     if ev_form.is_valid():
         event = ev_form.save(commit=False)
         event.author = request.user.username
-        ev_form.save
+        event.save()
         return redirect('.')    
 
     
-    # Базова форма    
     events = Event.objects.filter(ev_date__month=month).order_by("ev_date")   
        
     if isinstance(year, str):
@@ -45,8 +44,7 @@ def yearCalend(request, year=datetime.now().year, month=datetime.now().month):
     if month == datetime.now().month:
         today = datetime.now().day
     else:
-        today = None
- 
+        today = None 
     
     prev_calend = prev_month(year, month)
     next_calend = next_month(year, month)
