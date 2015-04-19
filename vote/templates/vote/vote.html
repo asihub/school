@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>{{ vote.title }}</h2>
+<hr>
+
+
+
+<form action="." method="post">
+{% csrf_token %}
+	{% for row in dataset %}
+		<p>
+			{% if user.is_authenticated %}
+				<input name="answer" type="radio" value="{{ row.id }}"> {{ row.title }}
+			{% else %}
+				{{ row.title }}
+			{% endif %}
+			<small><br>Голоси ({{ row.users.all.count }}):
+			{% for u in row.users.all %}
+				|
+			{% endfor %}
+			</small>
+		</p>
+	{% endfor %}
+	<hr>
+{% if user.is_authenticated %}
+	<input type="submit" class="button submit" value="Відправити" />
+{% endif %}
+</form>
+
+
+{% endblock %}

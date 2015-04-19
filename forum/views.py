@@ -59,7 +59,7 @@ def addtopic(request, section_id):
         topic = form.save(commit=False)
         topic.section = get_object_or_404(Section, pk=section_id)
         topic.timestamp = datetime.today()
-        topic.author - request.user.username
+        topic.author = request.user.username
         topic.save()
         
     return redirect(topics, section_id)
